@@ -61,7 +61,11 @@ On top of that:
    `data/diary/<today>.md` before anything else** — so you know what was planned
    for the day and what has actually happened so far (meals eaten, weight, notes).
    Match the two: which planned meals are already logged, which are still ahead.
-   Never propose/ask about a meal that's already eaten.
+   Never propose/ask about a meal that's already eaten. **This is a hard gate: do
+   NOT send your first reply — and never ask "is there already something in the
+   plan?" / "want a meal idea?" — until you have actually read the plan file. If a
+   plan exists, you already know the answer; state it, don't ask it.** The injected
+   `./t today` status is a summary, not a substitute for reading the plan + diary.
 3. Note where the day stands (intake vs band, what's left from the plan,
    water/sleep/checklist, earlier coach notes).
 4. Ask for and record any daily health metric the user tracks (e.g. morning fasting
@@ -69,7 +73,9 @@ On top of that:
 5. **Open your first reply with a short check-in — a simple bullet list, not prose.**
    A few bullets in the user's language (intake vs band / what's left, water, the
    tracked metric, last coach note), then one short closing line with the next step
-   or question. Branch from the injected status:
+   or question. **The closing line must build on what the plan already says — name
+   the concrete next planned meal; never offload onto the user a question the plan
+   answers.** Branch from the injected status:
    - **New day** (≈0 intake, no coach notes, metric not yet logged): greet + a bullet
      prompting the tracked metric (e.g. fasting glucose) and the first meal.
    - **Continuing** (already has intake/notes today): bullets recapping where we left
@@ -111,6 +117,12 @@ left off.
 - **Logging a meal with amount:** always put grams/quantity + kcal next to every
   food and ingredient (see "Amounts & kcal" above). Packaged barcoded product: `./t meal "<desc>" --off <barcode> --grams N`
   (exact kcal from OFF). Otherwise: `./t meal "<desc> (N g)" <kcal> [--protein]`.
+- **Meal time — never leave it blank (REQUIRED).** If the user states a time, pass
+  it with `--time HH:MM`. If they DON'T mention a time, the meal is logged at the
+  **moment they tell you (the dictation time)** — just omit `--time` and the script
+  fills in the current time automatically; never write `--:--`. The same applies when
+  you pre-write planned meals into the diary or edit a row by hand: put a real `HH:MM`
+  (the user's stated time, otherwise the current time), not a placeholder.
 
 ## When a plan is requested — the process
 0. **First check for an existing plan.** Before proposing anything new, look in

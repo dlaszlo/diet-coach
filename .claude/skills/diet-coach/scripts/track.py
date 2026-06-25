@@ -800,7 +800,8 @@ def main(argv: list[str]) -> int:
     p.add_argument("desc")
     p.add_argument("kcal", type=int, nargs="?", default=None,
                    help="kcal manually (optional if --off + --grams given)")
-    p.add_argument("--time", default="--:--")
+    p.add_argument("--time", default=None,
+                   help="HH:MM; if omitted, the current (dictation) time is used")
     p.add_argument("--protein", action="store_true")
     p.add_argument("--off", help="OFF barcode — compute kcal from it using --grams")
     p.add_argument("--grams", type=float, help="portion in grams (for --off)")
@@ -896,7 +897,8 @@ def main(argv: list[str]) -> int:
         elif kcal is None:
             print("⚠️ Provide the kcal, or use: --off <barcode> --grams N")
             return 2
-        add_meal(d, desc, kcal, args.time, protein)
+        meal_time = args.time or dt.datetime.now().strftime("%H:%M")
+        add_meal(d, desc, kcal, meal_time, protein)
         tot = intake_total(d)
         band = ("⬇️ below band" if tot < KCAL_MIN
                 else "⬆️ above band" if tot > KCAL_MAX else "✅ in band")
