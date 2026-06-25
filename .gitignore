@@ -1,0 +1,15 @@
+# ───────────────────────────────────────────────────────────────
+# Private personal data — must NEVER be committed.
+# The committed solution (skill, scripts/, data.example/) contains NO
+# personal data; the concrete values all live under data/.
+# Templates live in data.example/ (tracked).
+# ───────────────────────────────────────────────────────────────
+data/
+
+# Claude Code local (machine-specific) settings
+.claude/settings.local.json
+
+# Python
+__pycache__/
+*.pyc
+*.pyo

@@ -1,0 +1,16 @@
+{
+  "_comment": "Copy to data/config.json and fill in your own values. config.json is gitignored. The values here are just generic examples.",
+  "kcal_min": 1800,
+  "kcal_max": 2200,
+  "default_weight_kg": 80.0,
+  "water_target_label": "2–3 l",
+  "water_min_l": 2.0,
+  "language": "en",
+  "checklist": [
+    "Protein at every main meal",
+    "1–2 snacks",
+    "Fluids to the daily target",
+    "Got some movement",
+    "Went to bed on time"
+  ]
+}

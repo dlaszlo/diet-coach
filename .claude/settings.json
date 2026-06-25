@@ -1,0 +1,18 @@
+{
+  "statusLine": {
+    "type": "command",
+    "command": "cd \"$CLAUDE_PROJECT_DIR\" && ./t statusline"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && ./t day >/dev/null 2>&1; ./t today"
+          }
+        ]
+      }
+    ]
+  }
+}
